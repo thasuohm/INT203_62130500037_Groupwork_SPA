@@ -93,9 +93,12 @@ export default {
       this.editMode = true;
       this.$refs.NewProfile.editingMode();
     },
-    removePro(id) {
+    async removePro(id) {
       
-      this.profiles = this.profiles.filter(f => f.id !== id);
+      await fetch(`${this.url}/${id}`, {
+        method: 'DELETE'
+      })
+      this.profiles = this.profiles.filter(f => f.id !== id)
 
       if (this.viewProfile.id == id) {
 
