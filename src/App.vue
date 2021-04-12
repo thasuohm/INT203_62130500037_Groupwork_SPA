@@ -127,17 +127,30 @@ export default {
       alert("Scroll down to See Profile");
 
     },
-    editForm(Form) {
-      var index = this.profiles.findIndex(f => f.id == this.viewProfile.id);
-      if (this.editMode && this.isView) {
-        this.profiles[index].name = Form.name;
-        this.profiles[index].age = Form.age;
-        this.profiles[index].url = Form.url;
-        
-        this.editMode = false;
-        return;
-      }
+    async editForm(Form) {
+
+var index = this.profiles.findIndex(f => f.id == this.viewProfile.id);
+if (this.editMode && this.isView) {
+  const res = await fetch(`${this.url}/${this.viewProfile.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json'
     },
+    body: JSON.stringify({
+      name: Form.name,
+      age: Form.age,
+      url: Form.url
+    })
+  })
+  const data = await res.json()
+  this.profiles[index].name = data.name;
+  this.profiles[index].age = data.age;
+  this.profiles[index].url = data.url;
+  this.editMode = false;
+  return;
+}
+
+},
     async submitForm(newForm) {
       const res = await fetch(this.url, {
         method: 'POST',
