@@ -135,9 +135,24 @@ export default {
         return;
       }
     },
-    submitForm(newForm) {
-      this.profiles.id = new Date().toISOString()
-      this.profiles.push(newForm)
+    async submitForm(newForm) {
+      const res = await fetch(this.url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: newForm.name,
+          age: newForm.age,
+          url: newForm.url,
+        })
+      })
+      const data = await res.json();
+
+      this.profiles.push(data);
+     
+
+
     },
     async fetchProfiles() {
       const res = await fetch(this.url);
