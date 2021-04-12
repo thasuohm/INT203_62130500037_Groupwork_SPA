@@ -72,34 +72,7 @@ export default {
   },
   data() {
     return {
-
-      profiles: [
-        {
-          id: '1',
-          name: 'test1',
-          age: '12',
-          url: 'https://s1.zerochan.net/Arknights.600.3198092.jpg'
-        }
-        ,
-        {
-          id: '2',
-          name: 'test2',
-          age: '13',
-          url: 'https://f.ptcdn.info/767/068/000/q82fnqg08PW4HYN7XK9-o.png'
-        },
-        {
-          id: '3',
-          name: 'test3',
-          age: '14',
-          url: 'https://s1.zerochan.net/Arknights.600.3198092.jpg'
-        },
-        {
-          id: '4',
-          name: 'test4',
-          age: '15',
-          url: 'https://f.ptcdn.info/767/068/000/q82fnqg08PW4HYN7XK9-o.png'
-        },
-      ],
+      profiles: [],
       viewProfile:
       {
         id: null,
@@ -109,6 +82,7 @@ export default {
       },
       isView: false,
       editMode: false,
+      url:'http://localhost:5000/profiles'
      
 
     }
@@ -165,8 +139,16 @@ export default {
       this.profiles.id = new Date().toISOString()
       this.profiles.push(newForm)
     },
+    async fetchProfiles() {
+      const res = await fetch(this.url);
+      const data = await res.json();
+      return data;
+    },
 
 
+  },
+  async created() {
+    this.profiles = await this.fetchProfiles();
   }
 
 
