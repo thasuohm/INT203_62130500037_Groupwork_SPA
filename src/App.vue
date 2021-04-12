@@ -1,7 +1,10 @@
 <template>
   <nav-bar>
-    <router-link to="/Home" @click="this.isView = false">
-      <li class="liNavL">home</li>
+    <router-link to="/" @click="this.isView = false">
+      <li class="liNavL">Home</li>
+    </router-link>
+    <router-link to="/AddProfile" @click="this.isView = false">
+      <li class="liNavL">AddProfile</li>
     </router-link>
     <router-link to="/ProfileList">
       <li class="liNavL">ProfileList</li>

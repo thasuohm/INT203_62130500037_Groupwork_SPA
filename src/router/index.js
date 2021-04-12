@@ -3,12 +3,17 @@ import NewProfile from '../components/NewProfile.vue'
 
 import ProfileList from '../components/ProfileList.vue'
 import AboutUs from '../components/AboutUs.vue'
-
+import Home from '../components/Home.vue'
 
 const routes = [
     {
-        path: '/Home',
-        name: 'NewProfile',
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/AddProfile',
+        name: 'AddProfile',
         component: NewProfile
     },
     {
@@ -21,6 +26,7 @@ const routes = [
         name: 'AboutUs',
         component: AboutUs
     },
+   
 
 
    
