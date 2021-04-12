@@ -1,41 +1,21 @@
 <template>
   <nav-bar>
-    <a href="">
+    <router-link to="/Home" @click="this.isView = false">
       <li class="liNavL">home</li>
-    </a>
-    <a href="">
-      <li class="liNavL">Profile List</li>
-    </a>
-    <a href="">
-      <li class="liNavR">TEST1</li>
-    </a>
-    <a href="">
-      <li class="liNavR">TEST2</li>
-    </a>
+    </router-link>
+    <router-link to="/ProfileList">
+      <li class="liNavL">ProfileList</li>
+    </router-link>
+    <router-link to="/AboutUs" @click="this.isView = false">
+      <li class="liNavR">About us</li>
+    </router-link>
+   
   </nav-bar>
 
-  <h1 class="text-6xl">Add New Profile</h1>
-  <container class="mt-12 mr-auto ml-auto pb-2">
-    <new-profile @submit-form="submitForm" />
-  </container>
 
-  <h1 class="text-6xl mt-8">Profile List</h1>
-  <div class="scaleGrid">
-    <div v-for="profile in profiles" :key="profile.id">
-      <profile :IMG="profile.url" :Name="profile.name" :Age="profile.age">
-        <div class="flex ml-2 mr-2">
-          <base-button class="mr-2" labels="View Profile" @click="viewPro(profile.id)"></base-button>
-          <base-button
-            bgColor="bg-red-600"
-            borderColor="border-red-600"
-            hover="hover:bg-red-700"
-            labels="Remove Profile"
-            @click="removePro(profile.id)"
-          ></base-button>
-        </div>
-      </profile>
-    </div>
-  </div>
+
+  <router-view @submit-form="submitForm" :profiles="profiles" @view-pro="viewPro" @remove-pro="removePro"></router-view>
+
 
   <container class="mt-24 mr-auto ml-auto" v-if="isView" bgcolor="bg-gray-400" maxW="max-w-3xl">
     <view-profile :viewProfile="viewProfile" :isView="isView" :editMode="editMode">
@@ -62,13 +42,14 @@
 </template>
 
 <script>
-import Profile from './components/Profile.vue'
+
 import navBar from './components/UI/NavBar.vue'
 import ViewProfile from './components/ViewProfile.vue'
+import NewProfile from './components/NewProfile.vue'
 export default {
   name: 'App',
   components: {
-    Profile, navBar, ViewProfile
+     navBar, ViewProfile ,NewProfile
   },
   data() {
     return {
@@ -124,7 +105,7 @@ export default {
       this.viewProfile.name = this.profiles[index].name;
       this.viewProfile.age = this.profiles[index].age;
       this.viewProfile.url = this.profiles[index].url;
-      alert("Scroll down to See Profile");
+      
 
     },
     async editForm(Form) {

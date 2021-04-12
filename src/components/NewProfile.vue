@@ -1,5 +1,9 @@
 <template>
     <div>
+
+
+        <h1 class="text-6xl" v-if="editMode == false">Add New Profile</h1>
+        <container class="mx-auto my-2 py-3">
         <form @submit.prevent="submitForm(formdata)">
             <div class="pt-4 text-black">
                 <label for="Name">Name:</label>
@@ -21,7 +25,8 @@
                 class="mt-8"
                 labels="Submit"
             ></base-button>
-        </form>
+        
+        </form></container>
     </div>
 </template>
 
@@ -59,7 +64,7 @@ export default {
 
     methods: {
         submitForm() {
-            const Form = {
+            const Form = {   
                 name: this.formdata.name,
                 age: this.formdata.age,
                 url: this.formdata.url,
@@ -86,6 +91,7 @@ export default {
             this.formdata.name = ''
             this.formdata.age = null
             this.formdata.url = null
+            
             this.$emit('submit-form', Form)
 
 
