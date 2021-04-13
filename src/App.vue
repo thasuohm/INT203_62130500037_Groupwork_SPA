@@ -1,15 +1,15 @@
 <template>
   <nav-bar>
-    <router-link to="/" @click="this.isView = false">
+    <router-link v-if="editMode == false" to="/" @click="this.isView = false">
       <li class="liNavL">Home</li>
     </router-link>
-    <router-link to="/AddProfile" @click="this.isView = false">
+    <router-link v-if="editMode == false" to="/AddProfile" @click="this.isView = false">
       <li class="liNavL">AddProfile</li>
     </router-link>
-    <router-link to="/ProfileList">
+    <router-link v-if="editMode == false" to="/ProfileList">
       <li class="liNavL">ProfileList</li>
     </router-link>
-    <router-link to="/AboutUs" @click="this.isView = false">
+    <router-link v-if="editMode == false" to="/AboutUs" @click="this.isView = false">
       <li class="liNavR">About us</li>
     </router-link>
   </nav-bar>
