@@ -1,5 +1,5 @@
 <template>
-    <div class= "border" :class="[shape,borderColor,maxW,bgColor]">
+    <div class= "border" :class="[shape,bordercolor,maxW,bgcolor]">
        <slot></slot> 
        
     </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
     props:{
-    borderColor:{ 
+    bordercolor:{ 
         type: String,
         default: 'border-gray-600',
     },
@@ -19,7 +19,7 @@ export default {
         default: 'max-w-2xl',
 
     },
-    bgColor:{
+    bgcolor:{
         type: String,
         default: 'bg-white'
     },

@@ -5,11 +5,6 @@
             <h1 class="text-xl">Student Id : 62130500037</h1>
             <h1 class="text-xl">Name : Thanapat Suwannaard</h1>
             <h1 class="text-xl">Study in : SIT KMUTT</h1>
-
         </container>
-
-
-
-
     </div>
 </template>

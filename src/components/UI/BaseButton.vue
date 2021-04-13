@@ -2,7 +2,7 @@
     <button
         class="BaseButton"
         @click="sentVal"
-        :class="[borderColor, bgColor, hover, txtColor]"
+        :class="[bordercolor, bgcolor, hover, txtcolor]"
     >{{ labels }}</button>
 </template>
 <script>
@@ -13,11 +13,11 @@ export default {
             type: String
 
         },
-        borderColor: {
+        bordercolor: {
             type: String,
             default: 'border-blue-500'
         },
-        bgColor: {
+        bgcolor: {
             type: String,
             default: 'bg-blue-500'
         },
@@ -25,7 +25,7 @@ export default {
             type: String,
             default: 'hover:bg-blue-600'
         },
-        txtColor: {
+        txtcolor: {
             type: String,
             default: 'text-white'
         },
