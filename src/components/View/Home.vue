@@ -6,7 +6,7 @@
             </h1>
 
             <h1>
-                <b>i have 4 router Path on Navbar there is</b>
+                <b>i have 6 router Path there is</b>
             </h1>
             <h1>
                 <b>-------------------------------------------------------</b>
